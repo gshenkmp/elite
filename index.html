@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Updates - Team Elite</title>
+    <title>Team Elite - Financial Services</title>
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Contact Form Styling */
+        #contactForm input:focus,
+        #contactForm textarea:focus,
+        #contactForm select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        #contactForm input:hover,
+        #contactForm textarea:hover,
+        #contactForm select:hover {
+            border-color: #9ca3af;
+        }
+        
+        /* Mobile responsiveness for contact section */
+        @media (max-width: 768px) {
+            #contact > div {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+        
+        /* Form submission states */
+        .form-loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .form-success {
+            background: #f0fdf4 !important;
+            border-color: #bbf7d0 !important;
+        }
+        
+        .form-error {
+            background: #fef2f2 !important;
+            border-color: #fecaca !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -90,25 +130,121 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <div class="contact-info">
-                    <p><strong>Phone:</strong> (555) 123-ELITE</p>
-                    <p><strong>Email:</strong> info@teamelitefinancial.com</p>
-                    <p><strong>Office Hours:</strong> Mon-Fri 8AM-6PM</p>
+        <section id="contact" class="services-section">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Ready to secure your financial future? Let's start the conversation today.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                <!-- Contact Form -->
+                <div class="service-card" style="max-width: none;">
+                    <h3 style="color: #1a365d; margin-bottom: 1.5rem; text-align: center;">Send Us A Message</h3>
+                    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Full Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                   style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;"
+                                   placeholder="Enter your full name">
+                        </div>
+                        
+                        <div>
+                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;"
+                                   placeholder="Enter your email address">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;"
+                                   placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <div>
+                            <label for="service" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Service Interest</label>
+                            <select id="service" name="service" 
+                                    style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; background-color: white;">
+                                <option value="">Select a service</option>
+                                <option value="life-insurance">Life Insurance</option>
+                                <option value="retirement-planning">Retirement Planning</option>
+                                <option value="investment-products">Investment Products</option>
+                                <option value="business-solutions">Business Solutions</option>
+                                <option value="consultation">General Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Message *</label>
+                            <textarea id="message" name="message" rows="4" required 
+                                      style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; resize: vertical; transition: border-color 0.3s ease;"
+                                      placeholder="Tell us about your financial goals and how we can help..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button" style="margin-top: 1rem; width: 100%;">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div>
+                    <div class="service-card" style="max-width: none; margin-bottom: 2rem;">
+                        <h3 style="color: #1a365d; margin-bottom: 1.5rem; text-align: center;">Contact Information</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem;">📞</span>
+                                <div>
+                                    <strong style="color: #374151;">Phone:</strong><br>
+                                    <span style="color: #6b7280;">(555) 123-ELITE</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem;">✉️</span>
+                                <div>
+                                    <strong style="color: #374151;">Email:</strong><br>
+                                    <span style="color: #6b7280;">info@teamelitefinancial.com</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem;">🕒</span>
+                                <div>
+                                    <strong style="color: #374151;">Office Hours:</strong><br>
+                                    <span style="color: #6b7280;">Mon-Fri 8AM-6PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card" style="max-width: none;">
+                        <h3 style="color: #1a365d; margin-bottom: 1.5rem; text-align: center;">Service Areas</h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; text-align: center;">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                                <span style="font-size: 1.2rem;">🏙️</span>
+                                <span style="color: #374151; font-weight: 600;">Dallas, Texas</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                                <span style="font-size: 1.2rem;">🎰</span>
+                                <span style="color: #374151; font-weight: 600;">Las Vegas, Nevada</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                                <span style="font-size: 1.2rem;">🇺🇸</span>
+                                <span style="color: #374151; font-weight: 600;">Nationwide Service Available</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
             <div class="footer-section">
-                <h3>Service Areas</h3>
+                <h3>Team Elite Financial</h3>
                 <div class="contact-info">
-                    <p>Dallas, Texas</p>
-                    <p>Las Vegas, Nevada</p>
-                    <p>Nationwide Service Available</p>
+                    <p>Excellence isn't just our standard—it's our promise.</p>
+                    <p>Where Financial Dreams Transform Into Reality</p>
                 </div>
             </div>
             
@@ -120,6 +256,15 @@
                     <p><a href="#contact">Contact Us</a></p>
                 </div>
             </div>
+            
+            <div class="footer-section">
+                <h3>Follow Up</h3>
+                <div class="contact-info">
+                    <p>We typically respond within 24 hours</p>
+                    <p>All consultations are confidential</p>
+                    <p>No obligation initial meetings</p>
+                </div>
+            </div>
         </div>
         
         <div class="footer-bottom">
@@ -127,6 +272,7 @@
             <p>Protecting Families • Building Futures • Creating Legacy</p>
         </div>
     </footer>
+
     <script src="js/site.js"></script>
 </body>
 </html>
