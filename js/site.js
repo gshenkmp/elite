@@ -18,26 +18,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Get form data
                 const formData = new FormData(contactForm);
                 
-                // For demo purposes - replace with actual form handler
-                // Option 1: Formspree (replace YOUR_FORM_ID)
-                // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                //     method: 'POST',
-                //     body: formData,
-                //     headers: {
-                //         'Accept': 'application/json'
-                //     }
-                // });
+                // Formspree submission with your form ID
+                const response = await fetch('https://formspree.io/f/xzzaqdqk', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
                 
-                // Simulate form submission for demo
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Show success message
-                showFormMessage('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
-                contactForm.reset();
+                if (response.ok) {
+                    showFormMessage('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
                 
             } catch (error) {
-                // Show error message
-                showFormMessage('Sorry, there was an error sending your message. Please try again or call us directly.', 'error');
+                console.error('Form submission error:', error);
+                showFormMessage('Sorry, there was an error sending your message. Please try again or call us directly at (555) 123-ELITE.', 'error');
             } finally {
                 // Reset button state
                 submitButton.textContent = originalButtonText;
